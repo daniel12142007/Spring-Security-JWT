@@ -4,6 +4,7 @@ import com.example.springsecurityjwt.dto.response.ModelResponse;
 import com.example.springsecurityjwt.service.ModelService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,4 +34,15 @@ public class AdminApi {
     public ModelResponse raiseAdmin(@RequestParam Long id, @RequestParam String key) {
         return modelService.raiseAdmin(id, key);
     }
+<<<<<<< HEAD
 }
+=======
+
+    @DeleteMapping("delete/by/id")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @Operation(summary = "delete user and premuim")
+    public ModelResponse deleteById(@RequestParam Long id) {
+        return modelService.ban(id);
+    }
+}
+>>>>>>> 248887f (Initial commit)

@@ -11,6 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
+
+import javax.persistence.EntityNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,9 +85,28 @@ public class ModelService {
         }
     }
 
+<<<<<<< HEAD
 //    public ModelResponse ban(Long id) {
 //        if (modelRepo.getById(id).getRole() != Role.ADMIN   ) {
 //
 //        }
 //    }
+=======
+    public ModelResponse ban(Long id) {
+        try {
+            if (modelRepo.getById(id).getRole() != Role.ADMIN) {
+                List<ModelResponse> modelResponse = new ArrayList<>();
+                ModelMapper modelMapper = new ModelMapper();
+                modelResponse.add(modelMapper.map(modelRepo.findById(id), ModelResponse.class));
+                modelRepo.deleteById(id);
+                personRepo.deleteById(id);
+                return modelResponse.get(Math.toIntExact(id - 1));
+            } else {
+                throw new RuntimeException("This is admin model");
+            }
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No such user");
+        }
+    }
+>>>>>>> 248887f (Initial commit)
 }
