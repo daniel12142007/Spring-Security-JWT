@@ -85,13 +85,6 @@ public class ModelService {
         }
     }
 
-<<<<<<< HEAD
-//    public ModelResponse ban(Long id) {
-//        if (modelRepo.getById(id).getRole() != Role.ADMIN   ) {
-//
-//        }
-//    }
-=======
     public ModelResponse ban(Long id) {
         try {
             if (modelRepo.getById(id).getRole() != Role.ADMIN) {
@@ -108,5 +101,4 @@ public class ModelService {
             throw new EntityNotFoundException("No such user");
         }
     }
->>>>>>> 248887f (Initial commit)
 }

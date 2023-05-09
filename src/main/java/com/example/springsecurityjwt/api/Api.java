@@ -5,6 +5,7 @@ import com.example.springsecurityjwt.dto.response.ModelResponse;
 import com.example.springsecurityjwt.service.ModelService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.PermitAll;
@@ -24,9 +25,16 @@ public class Api {
     }
 
     @GetMapping("/get/name")
-    @PermitAll
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER','PREMUIM')")
     @Operation(summary = "get by name")
     public List<ModelResponse> getByName(@RequestParam String name) {
         return modelService.getByName(name);
+    }
+
+    @GetMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER','PREMUIM')")
+    @Operation(summary = "get by id")
+    public ModelResponse getById(@RequestParam Long id) {
+        return modelService.getById(id);
     }
 }
