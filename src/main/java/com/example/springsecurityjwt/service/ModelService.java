@@ -7,6 +7,7 @@ import com.example.springsecurityjwt.model.Person;
 import com.example.springsecurityjwt.model.enusm.Role;
 import com.example.springsecurityjwt.repository.ModelRepo;
 import com.example.springsecurityjwt.repository.PersonRepo;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -54,22 +55,20 @@ public class ModelService {
     }
 
     public ModelResponse raiseAdmin(Long id, String key) {
-        switch (key) {
-            case "java" -> {
-                if (personRepo.findById(id).get().getRole() != Role.ADMIN) {
-                    try {
-                        modelRepo.raiseModelAdmin(id);
-                        personRepo.raisePersonAdmin(id);
-                        return new ModelMapper().map(modelRepo.findById(id), ModelResponse.class);
-                    } catch (RuntimeException e) {
-                        throw new RuntimeException("error");
-                    }
-                } else {
-                    throw new RuntimeException("This is admin model");
+        if (key.equals("java")) {
+            if (personRepo.findById(id).get().getRole() != Role.ADMIN) {
+                try {
+                    modelRepo.raiseModelAdmin(id);
+                    personRepo.raisePersonAdmin(id);
+                    return new ModelMapper().map(modelRepo.findById(id), ModelResponse.class);
+                } catch (RuntimeException e) {
+                    throw new RuntimeException("error");
                 }
+            } else {
+                throw new RuntimeException("This is admin model");
             }
-            default -> throw new RuntimeException("password incorrect");
         }
+        throw new RuntimeException("password incorrect");
     }
 
     public List<ModelResponse> getByName(String name) {

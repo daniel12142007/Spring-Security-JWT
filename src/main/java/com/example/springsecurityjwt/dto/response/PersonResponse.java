@@ -7,5 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class PersonResponse {
     private String email;
+    //  This parameter returns a token
     private String jwt;
 }
