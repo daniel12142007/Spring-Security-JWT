@@ -33,6 +33,9 @@ public interface ModelRepo extends JpaRepository<Model, Long> {
 
     // This method is needed to find by name
     @Query("select u from Model u where u.name like %:name%")
-    List<Model> getByName(@Param(value = "name") String name);
+    List<Model> getByAllName(@Param(value = "name") String name);
+
+    @Query("select u from Model u where u.name =:name")
+    Model getByName(@Param(value = "name") String name);
 
 }

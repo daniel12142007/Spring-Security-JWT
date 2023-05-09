@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,6 +20,7 @@ public class Model {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+
 
     public Model(String name, String lastName, String email, String password, Role role) {
         this.name = name;

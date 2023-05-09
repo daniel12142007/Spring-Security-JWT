@@ -8,7 +8,6 @@ import com.example.springsecurityjwt.repository.PersonRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,5 +34,6 @@ public class SpringSecurityJwtApplication {
         Model model1 = new Model("daniel1", "ahatzanov1", person1.getEmail(), person1.getPassword(), person1.getRole());
         repo.saveAll(List.of(person, person1));
         modelRepo.saveAll(List.of(model, model1));
+        modelRepo.save(model1);
     }
 }

@@ -7,7 +7,6 @@ import com.example.springsecurityjwt.model.Person;
 import com.example.springsecurityjwt.model.enusm.Role;
 import com.example.springsecurityjwt.repository.ModelRepo;
 import com.example.springsecurityjwt.repository.PersonRepo;
-import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -73,7 +72,7 @@ public class ModelService {
 
     public List<ModelResponse> getByName(String name) {
         if (name != null) {
-            List<Model> models = modelRepo.getByName(name);
+            List<Model> models = modelRepo.getByAllName(name);
             List<ModelResponse> model = new ArrayList<>();
             for (Model m : models) {
                 model.add(new ModelMapper().map(m, ModelResponse.class));
