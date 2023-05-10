@@ -3,15 +3,13 @@ package com.example.springsecurityjwt.model;
 import com.example.springsecurityjwt.model.enusm.State;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
 @Entity
-@Component
 @Data
 @NoArgsConstructor
-public class Laptop {
+public class LaptopIs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

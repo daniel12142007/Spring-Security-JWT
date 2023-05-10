@@ -21,7 +21,7 @@ public class Model {
     @Enumerated(EnumType.STRING)
     private Role role;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "model")
-    private List<Laptop> laptops;
+    private List<LaptopIs> laptopIs;
 
 
     public Model(String name, String lastName, String email, String password, Role role) {
