@@ -20,6 +20,8 @@ public class Model {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "model")
+    private List<Laptop> laptops;
 
 
     public Model(String name, String lastName, String email, String password, Role role) {
