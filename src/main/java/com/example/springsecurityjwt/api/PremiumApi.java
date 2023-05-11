@@ -20,4 +20,9 @@ public class PremiumApi {
     public LaptopResponse save(@RequestBody LaptopRequest laptopRequest, @RequestParam Long id) {
         return premiumService.saveLaptop(id, laptopRequest);
     }
+    @GetMapping("count/laptop/user")
+    @PreAuthorize("hasAnyAuthority('PREMIUM')")
+    public Long count(@RequestParam Long id){
+        return premiumService.count(id);
+    }
 }

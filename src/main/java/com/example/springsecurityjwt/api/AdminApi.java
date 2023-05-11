@@ -34,10 +34,7 @@ public class AdminApi {
     public ModelResponse raiseAdmin(@RequestParam Long id, @RequestParam String key) {
         return modelService.raiseAdmin(id, key);
     }
-<<<<<<< HEAD
-}
-=======
-
+    
     @DeleteMapping("delete/by/id")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @Operation(summary = "delete user and premuim")
@@ -45,4 +42,3 @@ public class AdminApi {
         return modelService.ban(id);
     }
 }
->>>>>>> 248887f (Initial commit)

@@ -31,10 +31,10 @@ public class Api {
         return modelService.getByName(name);
     }
 
-    @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN','USER','PREMUIM')")
-    @Operation(summary = "get by id")
-    public ModelResponse getById(@RequestParam Long id) {
-        return modelService.getById(id);
-    }
+//    @GetMapping
+//    @PreAuthorize("hasAnyAuthority('ADMIN','USER','PREMUIM')")
+//    @Operation(summary = "get by id")
+//    public ModelResponse getById(@RequestParam Long id) {
+//        return modelService.getById(id);
+//    }
 }

@@ -29,4 +29,8 @@ public class PremiumService {
             throw new RuntimeException("This model is not premium or admin");
         }
     }
+
+    public Long count(Long id) {
+        return laptopRepo.count(id);
+    }
 }
