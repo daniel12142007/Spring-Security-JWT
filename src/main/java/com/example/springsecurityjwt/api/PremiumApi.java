@@ -21,7 +21,8 @@ public class PremiumApi {
         return premiumService.saveLaptop(id, laptopRequest);
     }
     @GetMapping("count/laptop/user")
-    @PreAuthorize("hasAnyAuthority('PREMIUM')")
+    @PreAuthorize("hasAnyAuthority('PREMIUM','ADMIN')")
+    @Operation(summary = "count laptop ")
     public Long count(@RequestParam Long id){
         return premiumService.count(id);
     }
